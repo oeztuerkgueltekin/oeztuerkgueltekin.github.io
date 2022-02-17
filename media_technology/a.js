@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function(){
         section.appendChild(div);
         div.innerHTML=ar[index];
 
-        // let cl= document.getElementsByClassName("mem")[index].addEventListener("click", () =>{
+        //asa let cl= document.getElementsByClassName("mem")[index].addEventListener("click", () =>{
         //     while(numCardOpend.length<2)
         //     {
         //         let firstclick=null;
