@@ -13,4 +13,7 @@ section{
     color:white;
     justify-content: center;
     align-items: center;
+    border-radius: 20px;
+    font-family: Fantasy;
+    font-size: 60px;
 }
