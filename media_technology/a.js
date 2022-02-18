@@ -1,21 +1,85 @@
 let section=document.querySelector(".place");
-let count=7;
+
 openedCards = [];
 numCardMatched = [];
-let id= ["1.1","2.1","3.1","4.1","5.1","6.1","7.1","8.1","1.2","2.2","3.2","4.2","5.2","6.2","7.2","8.2"];
-function Kästchen(content,id){
-    this.content=content;
-    this.id=id;
-}
+    let ar= [
+        {
+            src: "./img/band.png",
+            name:"band1"
+        },
+        {
+            src: "./img/band.png",
+            name:"band2"
+        },
+        {
+            src: "./img/farbe.png",
+            name:"farbe1"
+        },
+        {
+            src: "./img/farbe.png",
+            name:"farbe2"
+        },
+        {
+            src: "./img/holz.png",
+            name:"holz1"
+        },
+        {
+            src: "./img/holz.png",
+            name:"holz2"
+        },
+        {
+            src: "./img/kleben.png",
+            name:"kleben1"
+        },        
+        {
+            src: "./img/kleben.png",
+            name:"kleben2"
+        },
+        {
+            src: "./img/kunst.png",
+            name:"kunst1"
+        },        
+        {
+            src: "./img/kunst.png",
+            name:"kunst2"
+        },
+        {
+            src: "./img/pinsel-malen.png",
+            name:"pinsel-malen1"
+        },        
+        {
+            src: "./img/pinsel-malen.png",
+            name:"pinsel-malen2"
+        },
+        {
+            src: "./img/schurze.png",
+            name:"schurze1"
+        },        
+        {
+            src: "./img/schurze.png",
+            name:"schurze2"
+        },
+        {
+            src: "./img/zange.png",
+            name:"zange1"
+        },        
+        {
+            src: "./img/zange.png",
+            name:"zange2"
+        }
+            ]
 document.addEventListener('DOMContentLoaded', function(){  
-    let ar= [1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8];
     ar.sort(()=> Math.random()-0.5);
     for (let index = 0; index < 16; index++) {
         var div = document.createElement('div');
-        div.className="mem";
-        div.addEventListener('click',flip);
+        var img = document.createElement('img');
+        img.className="pic";
+        div.className="mem";        
+        img.src=ar[index].src
+        img.addEventListener('click',op);
         section.appendChild(div);
-        div.innerHTML=ar[index];
+        div.appendChild(img);
+        // div.innerHTML=ar[index];
 
         //asa let cl= document.getElementsByClassName("mem")[index].addEventListener("click", () =>{
         //     while(numCardOpend.length<2)
@@ -41,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function(){
         // });    
 
 }});
-function flip(){
+function op(){
     opencard(this);
 }
 function opencard(item)
@@ -49,48 +113,43 @@ function opencard(item)
 
     if(openedCards.length<2)
     {
-        var randomNumber = Math.floor(Math.random()*id.length);
-
-        openedCards.push(new Kästchen(item,id[randomNumber]))
+        openedCards.push(item)
+        // setTimeout(() => {
+        //     item.style.backgroundColor="#0047BB";item.style.backgroundColor="#9AD00E";
+        // }, 2000); 
         item.style.backgroundColor="#9AD00E";  
-
-        console.log(openedCards[0].content);        
-        console.log(openedCards[0].id);
-        console.log(openedCards[1].content);        
-        console.log(openedCards[1].id);
-
+        console.log(openedCards[0]);
+        console.log(openedCards[1]);
         if(openedCards.length==2)
         {
-            if(openedCards[0].content.innerHTML==openedCards[1].content.innerHTML && openedCards[0].id!=openedCards[1].id)
-            {   //openedCards[0].style.backgroundColor="#00FF7F"
-                //openedCards[1].style.backgroundColor="#00FF7F"
-                id = id.filter(function(f) { return f !== openedCards[0].id})
-                id = id.filter(function(f) { return f !== openedCards[1].id})
+            //console.log("DGHX",openedCards[0].getElementsByTagName('img').src);
+
+            if(openedCards[0].src==openedCards[1].src)
+            {   openedCards[0].style.backgroundColor="#00FF7F"
+                openedCards[1].style.backgroundColor="#00FF7F"
                 numCardMatched.push(openedCards[0]);
                 numCardMatched.push(openedCards[1]);
-
                 openedCards.pop()
                 openedCards.pop()
-
                 console.log("THEY MATCH!!!!")
+                numCardMatched.forEach(element => 
+                {
+                    console.log(element);
+                });
             }
-            else if(openedCards[0].content.innerHTML==openedCards[1].content.innerHTML && openedCards[0].id==openedCards[1].id){
-                alert("You clicked the same card 2 Times")
-            }
-            else{               
-                console.log("THEY DONT MATCH!!!!")         
-                //openedCards[0].style.backgroundColor="#FF0000";  
-                //openedCards[1].style.backgroundColor="#FF0000";
-                id.push(openedCards[0].id);  
-                id.push(openedCards[1].id)
+            else{                        
+                openedCards[0].style.backgroundColor="#FF0000";  
+                openedCards[1].style.backgroundColor="#FF0000";  
                 setTimeout(() => {
-                    //openedCards[0].style.backgroundColor="#0047BB";  
-                    //openedCards[1].style.backgroundColor="#0047BB";
+                    openedCards[0].style.backgroundColor="#7B459E";  
+                    openedCards[1].style.backgroundColor="#7B459E";
+                    openedCards.pop()
+                    openedCards.pop()
+                }, 345);
 
-                    openedCards.pop()
-                    openedCards.pop()
-                }, 1000);
-                count-=1;
+
+ 
+                console.log("THEY DONT MATCH!!!!")
                 }
                 
     }
