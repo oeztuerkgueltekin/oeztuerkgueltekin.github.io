@@ -133,7 +133,7 @@ function opencard(item)
         console.log(openedCards[1]);
         if(openedCards.length==2)
         {
-            //console.log("DGHX",openedCards[0].getElementsByTagName('img').src);
+            //sconsole.log("DGHX",openedCards[0].getElementsByTagName('img').src);
 
             if(openedCards[0].querySelector("img").src==openedCards[1].querySelector("img").src)
             {   
