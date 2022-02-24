@@ -21,8 +21,8 @@ section{
     border-color: #00B9F9;
     position: relative;
     transform-style:preserve-3d;
-    transition: all 2s ease;
-    transform: rotateY(180deg);
+    transition: all 2s cubic-bezier(0.175,0.885,0.32,1.275);
+    box-shadow: rgba(0,0,0,0.2) 0px 5px 15px;
 }
 .memback{
     display: flex;
@@ -39,6 +39,7 @@ section{
     border-color: #00B9F9;
     position: absolute;
     backface-visibility: hidden;
+    pointer-events: none;
 
 }
 .pic{
@@ -49,3 +50,4 @@ section{
 body{
     background-color: #0B0B45;
 }
+.toggleCard{transform: rotateY(180deg);}
