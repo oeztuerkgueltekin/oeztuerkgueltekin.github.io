@@ -70,18 +70,23 @@ numCardMatched = [];
             ]
 document.addEventListener('DOMContentLoaded', function(){  
     ar.sort(()=> Math.random()-0.5);
-    for (let index = 0; index < 16; index++) {
-        var div = document.createElement('div');
-        var div1 = document.createElement('div');
-        var img = document.createElement('img');
-        img.className="pic";
-        div.className="mem";   
-        div1.className="memback";     
-        img.src=ar[index].src
-        img.addEventListener('click',op);
-        section.appendChild(div);
-        div.appendChild(img);
-        div.appendChild(div1);
+ar.forEach(element => {
+    var div = document.createElement('div');
+    var div1 = document.createElement('div');
+    var img = document.createElement('img');
+    img.className="pic";
+    div.className="mem";   
+    div1.className="memback";     
+    img.src=element.src
+    div.addEventListener('click',op);
+    section.appendChild(div);
+    div.appendChild(img);
+    div.appendChild(div1);
+    div.addEventListener("click",(e)=>{
+        div.classList.toggle('toggleCard')
+});
+
+        })
         // div.innerHTML=ar[index];
 
         //asa let cl= document.getElementsByClassName("mem")[index].addEventListener("click", () =>{
@@ -107,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
         // });    
 
-}});
+});
 function op(){
     opencard(this);
 }
@@ -130,7 +135,7 @@ function opencard(item)
         {
             //console.log("DGHX",openedCards[0].getElementsByTagName('img').src);
 
-            if(openedCards[0].src==openedCards[1].src)
+            if(openedCards[0].querySelector("img").src==openedCards[1].querySelector("img").src)
             {   
                 // openedCards[0].style.backgroundColor="#00FF7F"
                 openedCards[0].style.backgroundColor="#00FF7F"
@@ -140,6 +145,10 @@ function opencard(item)
                 // openedCards[1].style.backgroundColor="#00FF7F"
                 openedCards[0].removeEventListener("click",op);
                 openedCards[1].removeEventListener("click",op);
+                openedCards[0].classList.remove("toggleCard");
+                openedCards[1].classList.remove("toggleCard");
+                openedCards[0].classList.remove("memback");
+                openedCards[1].classList.remove("memback");
                 numCardMatched.push(openedCards[0]);
                 numCardMatched.push(openedCards[1]);
                 openedCards.pop()
@@ -158,7 +167,7 @@ function opencard(item)
                     openedCards[1].style.backgroundColor="#7B459E";
                     openedCards.pop()
                     openedCards.pop()
-                }, 345);
+                }, 500);
 
 
  
