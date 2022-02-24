@@ -113,11 +113,14 @@ function opencard(item)
 
     if(openedCards.length<2)
     {
-        openedCards.push(item)
+        if(openedCards[0] != item)
+        {
+            openedCards.push(item)
         // setTimeout(() => {
         //     item.style.backgroundColor="#0047BB";item.style.backgroundColor="#9AD00E";
         // }, 2000); 
         item.style.backgroundColor="#9AD00E";  
+        }
         console.log(openedCards[0]);
         console.log(openedCards[1]);
         if(openedCards.length==2)
@@ -125,8 +128,15 @@ function opencard(item)
             //console.log("DGHX",openedCards[0].getElementsByTagName('img').src);
 
             if(openedCards[0].src==openedCards[1].src)
-            {   openedCards[0].style.backgroundColor="#00FF7F"
+            {   
+                // openedCards[0].style.backgroundColor="#00FF7F"
+                openedCards[0].style.backgroundColor="#00FF7F"
                 openedCards[1].style.backgroundColor="#00FF7F"
+                // openedCards[0].parentElement.style.backgroundColor="#00FF7F"
+                // openedCards[1].parentElement.style.backgroundColor="#00FF7F"
+                // openedCards[1].style.backgroundColor="#00FF7F"
+                openedCards[0].removeEventListener("click",op);
+                openedCards[1].removeEventListener("click",op);
                 numCardMatched.push(openedCards[0]);
                 numCardMatched.push(openedCards[1]);
                 openedCards.pop()
@@ -152,9 +162,7 @@ function opencard(item)
                 console.log("THEY DONT MATCH!!!!")
                 }
                 
-    }
+        }
     if(numCardMatched.length==16){
         alert("you win");
-    }
-}
-}
+        }}}
