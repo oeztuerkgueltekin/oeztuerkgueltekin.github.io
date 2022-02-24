@@ -72,13 +72,16 @@ document.addEventListener('DOMContentLoaded', function(){
     ar.sort(()=> Math.random()-0.5);
     for (let index = 0; index < 16; index++) {
         var div = document.createElement('div');
+        var div1 = document.createElement('div');
         var img = document.createElement('img');
         img.className="pic";
-        div.className="mem";        
+        div.className="mem";   
+        div1.className="memback";     
         img.src=ar[index].src
         img.addEventListener('click',op);
         section.appendChild(div);
         div.appendChild(img);
+        div.appendChild(div1);
         // div.innerHTML=ar[index];
 
         //asa let cl= document.getElementsByClassName("mem")[index].addEventListener("click", () =>{
