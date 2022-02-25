@@ -118,7 +118,7 @@ function op(){
 }
 function opencard(item)
 {
-
+    item.classList.add("flipped");
     if(openedCards.length<2)
     {
         if(openedCards[0] != item)
@@ -145,10 +145,7 @@ function opencard(item)
                 // openedCards[1].style.backgroundColor="#00FF7F"
                 openedCards[0].removeEventListener("click",op);
                 openedCards[1].removeEventListener("click",op);
-                openedCards[0].classList.remove("toggleCard");
-                openedCards[1].classList.remove("toggleCard");
-                openedCards[0].classList.remove("memback");
-                openedCards[1].classList.remove("memback");
+
                 numCardMatched.push(openedCards[0]);
                 numCardMatched.push(openedCards[1]);
                 openedCards.pop()
@@ -158,8 +155,15 @@ function opencard(item)
                 {
                     console.log(element);
                 });
+                numCardMatched.forEach(element => {
+                    element.classList.remove("toggleCard");
+                });   
             }
-            else{                        
+            else{    
+                openedCards.forEach(element => {
+                    element.classList.remove("flipped");
+                    element.classList.remove("toggleCard");
+                });                    
                 openedCards[0].style.backgroundColor="#FF0000";  
                 openedCards[1].style.backgroundColor="#FF0000";  
                 setTimeout(() => {
