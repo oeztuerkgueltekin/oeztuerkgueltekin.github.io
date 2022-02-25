@@ -153,11 +153,13 @@ function opencard(item)
                 console.log("THEY MATCH!!!!")
                 numCardMatched.forEach(element => 
                 {
-                    element.removeEventListener("click");
-                    element.classList.remove("toggleCard");
-                    element.classList.remove("toggleCard");
+                    element.classList.remove("flipped");
+                    element.style.pointerEvents ="none";
 
-                });                
+                });   
+                numCardMatched.forEach(element => {
+                    console.log("a")
+                });             
             }
             else{               
                 openedCards[0].style.backgroundColor="#FF0000";  
