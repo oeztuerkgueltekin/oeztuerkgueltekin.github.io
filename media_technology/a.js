@@ -1,5 +1,4 @@
 let section=document.querySelector(".place");
-
 openedCards = [];
 numCardMatched = [];
     let ar= [
@@ -86,6 +85,7 @@ ar.forEach(element => {
         div.classList.toggle('toggleCard')
 });
 
+
         })
         // div.innerHTML=ar[index];
 
@@ -153,17 +153,13 @@ function opencard(item)
                 console.log("THEY MATCH!!!!")
                 numCardMatched.forEach(element => 
                 {
-                    console.log(element);
-                });
-                numCardMatched.forEach(element => {
-                    element.parentElement.classList.remove("toggleCard");
-                });   
-            }
-            else{    
-                openedCards.forEach(element => {
-                    element.classList.remove("flipped");
+                    element.removeEventListener("click");
                     element.classList.remove("toggleCard");
-                });                    
+                    element.classList.remove("toggleCard");
+
+                });                
+            }
+            else{               
                 openedCards[0].style.backgroundColor="#FF0000";  
                 openedCards[1].style.backgroundColor="#FF0000";  
                 setTimeout(() => {
@@ -172,6 +168,14 @@ function opencard(item)
                     openedCards.pop()
                     openedCards.pop()
                 }, 500);
+                openedCards.forEach(el => {
+                    el.classList.remove("flipped");
+                    setTimeout(() => {
+                        el.classList.remove("toggleCard")
+                        
+                    }, 1000);
+                });
+                
 
 
  
