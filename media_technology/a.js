@@ -156,7 +156,7 @@ function opencard(item)
                     console.log(element);
                 });
                 numCardMatched.forEach(element => {
-                    element.classList.remove("toggleCard");
+                    element.parentElement.classList.remove("toggleCard");
                 });   
             }
             else{    
